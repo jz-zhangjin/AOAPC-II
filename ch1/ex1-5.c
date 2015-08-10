@@ -1,12 +1,14 @@
 #include <stdio.h>
-#include <math.h>
 int main() {
-    const double pi = acos(-1.0);
-    double r, h, s1, s2, s;
-    scanf("%lf%lf", &r, &h);
-    s1 = pi * r * r;
-    s2 = 2 * pi * r * h;
-    s = 2 * s1 + s2;
-    printf("Area = %.3f\n", s);
-    return 0;
+	int n;
+	const double price = 95.0;
+	double total = 0.0;
+
+	scanf("%d", &n);
+	total = price * n;
+	if (total >= 300)
+		total *= 0.85;
+
+	printf("%.2f\n", total);
+	
 }

@@ -1,4 +1,7 @@
 #include <stdio.h>
 int main() {
-    printf("%d\n",  8/5);
+	int a, b, c;
+	scanf("%d%d%d", &a, &b, &c);
+	printf("%.3f\n", (a+b+c)/3.0);
+	return 0;
 }

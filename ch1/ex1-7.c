@@ -1,7 +1,12 @@
 #include <stdio.h>
 int main() {
-	int n, m;
-	scanf("%d", &n);
-	m = (n%10) * 100 + (n/10%10) * 10 + n/100;
- 	printf("%03d\n", m);
+	int year;
+	scanf("%d", &year);
+
+	if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0))
+		printf("yes\n");
+	else
+		printf("no\n");
+
+	return 0;
 }
