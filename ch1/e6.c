@@ -7,7 +7,7 @@ int main() {
 	if (a >= c) { t = a; a = c; c = t; }
 	if (b >= c) { t = b; b = c; c = t; }
 
-	if (a + b < c)
+	if (a + b <= c)
 		printf("not a triangle\n");
 	else if ( a*a + b*b == c*c) 
 		printf("yes\n");
