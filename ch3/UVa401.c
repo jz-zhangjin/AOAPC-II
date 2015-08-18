@@ -1,32 +1,52 @@
-/*************************************************************************
-	> File Name: UVa401.c
-	> Author: Jin ZHANG
-	> Mail: jz.zhangjin@gmail.com
-	> Created Time: 二  8/11 15:40:22 2015
- ************************************************************************/
-
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <memory.h>
 
-const char* rev = "A   3  HIL JM O   2TUVWXY51SE Z  8 ";
-const char* msg[] = {"not a palindrome", "a regular palindrome", "a mirrored string",
-        "a mirrored palindrome"};
-char r(char ch) {
-    if (isalpha(ch)) return rev[ch - 'A'];
-    else return rev[ch - '0' + 25];
-}
-
+#define MAXN 120
+//char *s =  "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"
+const char *s = "A   3  HIL JM O   2TUVWXY51SE Z  8 ";
 int main() {
-    char s[30];
-    while (scanf("%s", s) == 1) {
-        int len = strlen(s);
-        int p = 1, m = 1;
-        for (int i = 0; i < (len+1)/2; i++) {
-            if (s[i] != s[len-1-i]) p = 0;
-            if (r(s[i]) != s[len-1-i]) m = 0;
-        }
-        printf("%s -- is %s.\n\n", s, msg[m*2+p]);
-    }
-    return 0;
+	int i, len, is_mirrored, is_palindrome;
+	char t, str[MAXN], temp[MAXN];
+	
+	//freopen("test.in", "r", stdin);
+	
+	while(scanf("%s", str) != EOF) {
+		is_mirrored = is_palindrome = 0;
+		len  = strlen(str);
+
+		memset(temp, 0, sizeof(temp));
+		for (i = 0; i < len; i++)
+			temp[i] = str[len - 1 -i];
+		if (strcmp(str, temp) == 0)
+			is_palindrome = 1;
+
+		for (i = 0; i < len; i++) {
+			if (isdigit(str[i]))
+				temp[i] = s[str[i] - '1' + 26];
+			else
+				temp[i] = s[str[i] - 'A'];
+		}
+
+		for (i = 0; i < len/ 2; i++) {
+			t = temp[i];
+			temp[i] = temp[len - 1 - i];
+			temp[len - 1 - i] = t;
+		}
+		if (strcmp(str, temp) == 0)
+			is_mirrored = 1;
+		
+		//printf("%d%d\n", is_palindrome, is_mirrored);	
+		if (!is_palindrome && !is_mirrored)
+			printf("%s -- is not a palindrome.\n\n", str);
+		else if(is_palindrome && !is_mirrored)
+			printf("%s -- is a regular palindrome.\n\n", str);
+		else if(!is_palindrome && is_mirrored)
+			printf("%s -- is a mirrored string.\n\n", str);
+		else
+			printf("%s -- is a mirrored palindrome.\n\n", str);
+	}
+	
+	return 0;
 }

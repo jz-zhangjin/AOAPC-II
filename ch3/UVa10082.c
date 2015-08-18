@@ -1,5 +1,5 @@
 /*************************************************************************
-	> File Name: UVa10082.c
+	> File Name: uva10082.c
 	> Author: Jin ZHANG
 	> Mail: jz.zhangjin@gmail.com
 	> Created Time: 二  8/11 14:10:11 2015

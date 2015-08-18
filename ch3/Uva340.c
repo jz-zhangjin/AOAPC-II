@@ -1,5 +1,5 @@
 /*************************************************************************
-	> File Name: Uva340.c
+	> File Name: uva340.c
 	> Author: Jin ZHANG
 	> Mail: jz.zhangjin@gmail.com
 	> Created Time: 三  8/12 10:33:24 2015

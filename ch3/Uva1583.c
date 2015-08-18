@@ -1,5 +1,5 @@
 /*************************************************************************
-	> File Name: Uva1583.c
+	> File Name: uva1583.c
 	> Author: Jin ZHANG
 	> Mail: jz.zhangjin@gmail.com
 	> Created Time: 三  8/12 11:20:16 2015
