@@ -21,7 +21,7 @@ void swap(char* x, char* y) {
 int main() {
     int count = 0;
 
-    freopen("uva227.in", "r", stdin);
+    //freopen("uva227.in", "r", stdin);
 
     while (gets(a[0]) && a[0][0] != 'Z') {
 
@@ -37,10 +37,16 @@ int main() {
         
         // go
         char *c; int fail = 0;
-        memset(cmd, 0, sizeof(cmd));
-        while (scanf("%s\n", cmd + strlen(cmd)) && cmd[strlen(cmd)-1] != '0');
+        //memset(cmd, 0, sizeof(cmd));
+        //while (scanf("%s\n", cmd + strlen(cmd)) && cmd[strlen(cmd)-1] != '0');
+        int len = 0;
+        while (~scanf("%c", &cmd[len]))
+            if (cmd[len] != '0') len++;
+            else break;
+        cmd[len] = 0; getchar(); 
 
-        for (c = cmd; *c != '0'; c++) {
+ //       for (int i=0; cmd[i]; i++) {//} = cmd; *c != '0'; c++) {
+        for(c = cmd; *c != 0; c++) {
             switch (*c) {
                 case 'L':
                     if (sy == 0) fail = 1;
@@ -65,12 +71,13 @@ int main() {
         // output
         if (count++) printf("\n");
         printf("Puzzle #%d:\n",count);
-        if (*c == '0') {
+        if (!fail) {
             for (int i = 0; i < maxn; i++) {
-                for (int j = 0; j < maxn; j++) {
-                    printf ("%c", a[i][j]);
-                    j == maxn - 1 ? printf("\n") : printf(" ");
+                printf("%c", a[i][0]);    
+                for (int j = 1; j < maxn; j++) {
+                    printf (" %c", a[i][j]);
                 }
+                printf("\n");
             } 
         } else {
             printf("This puzzle has no final configuration.\n");
