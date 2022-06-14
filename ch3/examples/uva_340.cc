@@ -1,19 +1,13 @@
-/*************************************************************************
-	> File Name: uva340.c
-	> Author: Jin ZHANG
-	> Mail: jz.zhangjin@gmail.com
-	> Created Time: 三  8/12 10:33:24 2015
- ************************************************************************/
-
 #include <stdio.h>
-#define maxn 1010
+
+const int maxn = 1010;
 
 int main() {
     int n, a[maxn], b[maxn];
-    int kcase = 0;
+    int cnt = 0;
 
     while (scanf("%d", &n) == 1 && n) {
-        printf("Game %d:\n", ++kcase);
+        printf("Game %d:\n", ++cnt);
         for (int i = 0; i < n; i++) scanf("%d", &a[i]);
         for (;;) {
             int A = 0, B = 0;

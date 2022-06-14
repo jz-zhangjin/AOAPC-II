@@ -1,14 +1,7 @@
-/*************************************************************************
-	> File Name: uva1583.c
-	> Author: Jin ZHANG
-	> Mail: jz.zhangjin@gmail.com
-	> Created Time: 三  8/12 11:20:16 2015
- ************************************************************************/
-
 #include <stdio.h>
 #include <string.h>
 
-#define maxn 100005
+const int maxn = 100005;
 int ans[maxn];
 
 int main() {
