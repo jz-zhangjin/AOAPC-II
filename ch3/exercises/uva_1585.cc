@@ -1,5 +1,5 @@
-#include <memory.h>
 #include <stdio.h>
+#include <cstring>
 #define maxn 85
 
 int main() {

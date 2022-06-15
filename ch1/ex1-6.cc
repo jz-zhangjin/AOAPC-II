@@ -9,11 +9,11 @@ int main() {
     if (b >= c) { t = b; b = c; c = t; }
 
     if (a + b <= c)
-        printf("not a triangle\n");
-    else if ( a*a + b*b == c*c) 
-        printf("yes\n");
+      printf("not a triangle\n");
+    else if (a * a + b * b == c * c)
+      printf("yes\n");
     else
-        printf("no\n");
+      printf("no\n");
 
     return 0;
 }
