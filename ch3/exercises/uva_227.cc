@@ -3,24 +3,28 @@
 using namespace std;
 
 const int maxn = 5;
-char map[maxn][maxn + 1];
+string map[maxn];
 
 int main() {
   int cnt = 0;
 
-  while (cin.getline(map[0], maxn + 1)) {
-    if (map[0][0] == 'Z') break;
-
+  while (getline(cin, map[0]) && map[0] != "Z") {
     for (int i = 1; i < maxn; ++i) {
-      cin.getline(map[i], maxn + 1);
+      getline(cin, map[i]);
     }
 
-    int bx = 0, by = 0;
+    for (int i = 0; i < maxn; ++i) {
+      if (map[i].size() == 4) {
+        map[i] += ' ';
+      }
+    }
+
+    int x = 0, y = 0;
     for (int i = 0; i < maxn; ++i) {
       for (int j = 0; j < maxn; ++j) {
-        if (map[i][j] == ' ' || !map[i][j]) {
-          bx = i;
-          by = j;
+        if (map[i][j] == ' ') {
+          x = i;
+          y = j;
           break;
         }
       }
@@ -29,44 +33,59 @@ int main() {
     string input, cmd = "";
     while (getline(cin, input)) {
       cmd += input;
-      if (cmd.back() == '0') break;
+      if (input.back() == '0') break;
     }
 
-    bool move = true;
-    int x, y;
+    bool valid = true;
     for (auto c : cmd) {
       switch (c) {
         case 'A':
-          x = bx - 1;
-          y = by;
+          if (x == 0) {
+            valid = false;
+          } else {
+            swap(map[x][y], map[x - 1][y]);
+            --x;
+          }
           break;
         case 'B':
-          x = bx + 1;
-          y = by;
+          if (x == maxn - 1) {
+            valid = false;
+          } else {
+            swap(map[x][y], map[x + 1][y]);
+            ++x;
+          }
           break;
         case 'L':
-          x = bx;
-          y = by - 1;
+          if (y == 0) {
+            valid = false;
+          } else {
+            swap(map[x][y], map[x][y - 1]);
+            --y;
+          }
           break;
         case 'R':
-          x = bx;
-          y = by + 1;
+          if (y == maxn - 1) {
+            valid = false;
+          } else {
+            swap(map[x][y], map[x][y + 1]);
+            ++y;
+          }
+          break;
+        case '0':
+          break;
+        default:
+          valid = false;
           break;
       }
-      if (x < 0 || x >= maxn || y < 0 || y >= maxn) {
-        move = false;
+
+      if (!valid) {
         break;
       }
-
-      map[bx][by] = map[x][y];
-      map[x][y] = ' ';
-      bx = x;
-      by = y;
     }
 
     if (cnt++) cout << endl;
     cout << "Puzzle #" << cnt << ":" << endl;
-    if (!move) {
+    if (!valid) {
       cout << "This puzzle has no final configuration." << endl;
     } else {
       for (int i = 0; i < maxn; ++i) {
