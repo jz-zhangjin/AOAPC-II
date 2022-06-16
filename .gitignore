@@ -2,4 +2,5 @@
 *.out
 *.exe
 input*
+output*
 test.cc
